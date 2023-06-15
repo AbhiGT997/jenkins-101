@@ -63,3 +63,26 @@ docker inspect <container_id> | grep IPAddress
 ```
 docker pull devopsjourney1/myjenkinsagents:python
 ```
+
+# Running Docker as a Non-root user Open a terminal window.
+
+Check if the Docker group exists by running the following command:
+```
+grep docker /etc/group
+```
+If you see any output, it means the Docker group already exists.
+
+If the Docker group doesn't exist, create it by running the following command:
+
+```
+sudo groupadd docker
+```
+Add your user to the Docker group by running the following command:
+
+```
+sudo usermod -aG docker $USER
+```
+Log out of your current session and then log back in. This step is necessary to apply the group changes to your user account.
+
+After logging back in, verify that you can run Docker commands without sudo by running:
+
